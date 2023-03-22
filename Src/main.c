@@ -85,7 +85,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,7 +97,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    
+    if(HAL_GPIO_ReadPin(GPIOB,buton1_Pin) == GPIO_PIN_RESET)
+    {
     //0
     HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_RESET);
@@ -189,7 +190,7 @@ int main(void)
     HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_RESET);
     HAL_Delay(1000);
     //9
-     HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_SET);
@@ -198,8 +199,18 @@ int main(void)
     HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_RESET);
     HAL_Delay(1000);
-    
-
+    }
+     if(HAL_GPIO_ReadPin(GPIOB,buton2_Pin)== GPIO_PIN_RESET)
+     {
+    HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,d_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,e_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_SET);
+     }
     
   }
   /* USER CODE END 3 */
@@ -256,6 +267,7 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, a_Pin|b_Pin|c_Pin|dp_Pin
@@ -269,6 +281,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : buton1_Pin buton2_Pin */
+  GPIO_InitStruct.Pin = buton1_Pin|buton2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 

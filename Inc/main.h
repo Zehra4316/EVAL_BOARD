@@ -73,6 +73,10 @@ void Error_Handler(void);
 #define f_GPIO_Port GPIOA
 #define g_Pin GPIO_PIN_7
 #define g_GPIO_Port GPIOA
+#define buton1_Pin GPIO_PIN_12
+#define buton1_GPIO_Port GPIOB
+#define buton2_Pin GPIO_PIN_13
+#define buton2_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
