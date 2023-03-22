@@ -85,7 +85,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  
+  static int i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,8 +97,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if(HAL_GPIO_ReadPin(GPIOB,buton1_Pin) == GPIO_PIN_RESET)
-    {
+    
     //0
     HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_RESET);
@@ -190,7 +189,7 @@ int main(void)
     HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_RESET);
     HAL_Delay(1000);
     //9
-    HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
+     HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_SET);
@@ -199,18 +198,8 @@ int main(void)
     HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_RESET);
     HAL_Delay(1000);
-    }
-     if(HAL_GPIO_ReadPin(GPIOB,buton2_Pin)== GPIO_PIN_RESET)
-     {
-    HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,d_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,e_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_SET);
-     }
+    
+    
     
   }
   /* USER CODE END 3 */
