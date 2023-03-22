@@ -53,6 +53,33 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+  uint32_t valueArray[]={0x88,0xF9,0x4C,0x68,0x39,0x2A,0xA,0xF8,0x8,0x28};
+  void displayUpdate (uint8_t value)
+{
+	if(value==0){
+		GPIOA->ODR=valueArray[0];
+	}else if(value==1){
+		GPIOA->ODR=valueArray[1];
+	}else if(value==2){
+		GPIOA->ODR=valueArray[2];
+	}else if(value==3){
+		GPIOA->ODR=valueArray[3];
+	}else if(value==4){
+		GPIOA->ODR=valueArray[4];
+	}else if(value==5){
+		GPIOA->ODR=valueArray[5];
+	}else if(value==6){
+		GPIOA->ODR=valueArray[6];
+	}else if(value==7){
+		GPIOA->ODR=valueArray[7];
+	}else if(value==8){
+		GPIOA->ODR=valueArray[8];
+	}else if(value==9){
+		GPIOA->ODR=valueArray[9];
+	}else{
+		GPIOA->ODR=valueArray[0];
+	}
+}
 
 /* USER CODE END 0 */
 
@@ -85,7 +112,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  static uint8_t count=0;
+ static uint8_t count=0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,57 +125,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     
-    HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,d_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,e_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_SET);
-    
-    if(HAL_GPIO_ReadPin(GPIOB,buton1_Pin) == GPIO_PIN_RESET)
-    {
-     count++;
-     HAL_Delay(100);
-    }
-    if(count ==2)
-    {
-      HAL_GPIO_WritePin(GPIOA,a_Pin,GPIO_PIN_RESET);
+   displayUpdate(count);
+   HAL_Delay(1000);
+   count += 1;
    
-    }
-     if(count ==4)
-    {
-      HAL_GPIO_WritePin(GPIOA,b_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==6)
-    {
-      HAL_GPIO_WritePin(GPIOA,c_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==8)
-    {
-      HAL_GPIO_WritePin(GPIOA,dp_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==10)
-    {
-      HAL_GPIO_WritePin(GPIOA,d_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==12)
-    {
-      HAL_GPIO_WritePin(GPIOA,e_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==14)
-    {
-      HAL_GPIO_WritePin(GPIOA,f_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==16)
-    {
-      HAL_GPIO_WritePin(GPIOA,g_Pin,GPIO_PIN_RESET);
-    }
-    if(count ==18)
-    {
-      count =0;
-     }
+   if(count > 9)
+   {
+     count = 0;
+   }
+    
   /* USER CODE END 3 */
 
 }
