@@ -54,32 +54,11 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
   uint32_t valueArray[]={0x88,0xF9,0x4C,0x68,0x39,0x2A,0xA,0xF8,0x8,0x28};
+  int i=0;
   void displayUpdate (uint8_t value)
 {
-	if(value==0){
-		GPIOA->ODR=valueArray[0];
-	}else if(value==1){
-		GPIOA->ODR=valueArray[1];
-	}else if(value==2){
-		GPIOA->ODR=valueArray[2];
-	}else if(value==3){
-		GPIOA->ODR=valueArray[3];
-	}else if(value==4){
-		GPIOA->ODR=valueArray[4];
-	}else if(value==5){
-		GPIOA->ODR=valueArray[5];
-	}else if(value==6){
-		GPIOA->ODR=valueArray[6];
-	}else if(value==7){
-		GPIOA->ODR=valueArray[7];
-	}else if(value==8){
-		GPIOA->ODR=valueArray[8];
-	}else if(value==9){
-		GPIOA->ODR=valueArray[9];
-	}else{
-		GPIOA->ODR=valueArray[0];
-	}
-}
+   GPIOA->ODR=valueArray[value];
+}	
 
 /* USER CODE END 0 */
 
